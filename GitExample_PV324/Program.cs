@@ -25,20 +25,26 @@ namespace GitExample_PV324
             return true;
         }
 
-        static void Main(string[] args)
+        static void CLI()
         {
             do
             {
-                Console.Write("Enter n: ");
-                int n = Convert.ToInt32(Console.ReadLine());
-                bool isSimple = IsSimple(n);
-                if (isSimple)
+                try
                 {
-                    Console.WriteLine($"{n} is simple");
-                }
-                else
+                    Console.Write("Enter n: ");
+                    int n = Convert.ToInt32(Console.ReadLine());
+                    bool isSimple = IsSimple(n);
+                    if (isSimple)
+                    {
+                        Console.WriteLine($"{n} is simple");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"{n} is composite number");
+                    }
+                } catch (Exception ex)
                 {
-                    Console.WriteLine($"{n} is composite number");
+                    Console.WriteLine($"Error: {ex.Message}");
                 }
                 Console.WriteLine("Do you want to try again? (y/n)");
                 char reply = Console.ReadKey(true).KeyChar;
@@ -48,6 +54,11 @@ namespace GitExample_PV324
                     break;
                 }
             } while (true);
+        }
+
+        static void Main(string[] args)
+        {
+            CLI();
         }
     }
 }
