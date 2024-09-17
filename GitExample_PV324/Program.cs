@@ -27,15 +27,27 @@ namespace GitExample_PV324
 
         static void Main(string[] args)
         {
-            Console.Write("Enter n: ");
-            int n = Convert.ToInt32(Console.ReadLine());
-            bool isSimple = IsSimple(n);
-            if (isSimple) {
-                Console.WriteLine($"{n} is simple");
-            } else
+            do
             {
-                Console.WriteLine($"{n} is composite number");
-            }
+                Console.Write("Enter n: ");
+                int n = Convert.ToInt32(Console.ReadLine());
+                bool isSimple = IsSimple(n);
+                if (isSimple)
+                {
+                    Console.WriteLine($"{n} is simple");
+                }
+                else
+                {
+                    Console.WriteLine($"{n} is composite number");
+                }
+                Console.WriteLine("Do you want to try again? (y/n)");
+                char reply = Console.ReadKey(true).KeyChar;
+                if ("nNтТ".Contains(reply))
+                {
+                    Console.WriteLine("Goodbye!");
+                    break;
+                }
+            } while (true);
         }
     }
 }
